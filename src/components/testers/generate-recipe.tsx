@@ -89,7 +89,7 @@ export default function GenerateRecipeTester({ ingredients }: { ingredients: Ing
 			{recipe && (
 				<>
 					<ArrowDown className="text-muted-foreground size-6" />
-					<div className="flex flex-col w-full gap-2 flex-grow-[5] flex-shrink-[5] basis-0">
+					<div className="flex flex-col w-full gap-2 flex-grow-[5] flex-shrink-[5] basis-0 overflow-hidden">
 						<p className="text-2xl font-medium my-0">{recipe.name}</p>
 						<p>{recipe?.description}</p>
 						<div className="w-full flex flex-row justify-center items-center gap-2">

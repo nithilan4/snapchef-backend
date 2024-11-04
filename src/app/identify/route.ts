@@ -4,7 +4,7 @@ import { ChatPromptTemplate, PromptTemplate } from "@langchain/core/prompts";
 import { z } from "zod"
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 
-export const ingredientsFormat = z.object({
+const ingredientsFormat = z.object({
 	ingredients: z.array(z.object({
 		name: z.string().describe("The human-readable name of the ingredient"),
 		unit: z.string().describe("The descriptive and clear short name for the unit for the quantity specified"),

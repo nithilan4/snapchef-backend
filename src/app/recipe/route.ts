@@ -3,7 +3,14 @@ import { ChatAnthropic } from "@langchain/anthropic";
 import { ChatPromptTemplate, PromptTemplate } from "@langchain/core/prompts";
 import { z } from "zod"
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
-import { ingredientsFormat } from "../identify/route";
+
+const ingredientsFormat = z.object({
+	ingredients: z.array(z.object({
+		name: z.string().describe("The human-readable name of the ingredient"),
+		unit: z.string().describe("The descriptive and clear short name for the unit for the quantity specified"),
+		quantity: z.number().describe("The quantity in the units specified")
+	})).describe("An array of ingredients with names, units, and quantities in those units")
+})
 
 export async function POST(req: NextRequest) {
 	const json = await req.json().catch(e => {

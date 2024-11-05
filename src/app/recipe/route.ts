@@ -37,8 +37,8 @@ export async function POST(req: NextRequest) {
 				ingredients: z.array(z.string().describe("The name of an ingredient used in this step of the recipe")).describe("An array of ingredient names used in this step of the recipe"),
 				step: z.string().describe("A step of the recipe"),
 				time: z.string().describe("An estimated time in seconds, minutes, or hours that this step will take")
-			})).describe("A recipe containing steps and ingredients used in those steps")
-		})
+			})).describe("A list of steps with ingredients, steps, and time")
+		}).describe("A recipe containing steps and ingredients used in those steps")
 
 		const output = await model.withStructuredOutput(ResponseFormatter).invoke([
 			new SystemMessage("You are an expert chef AI assistant capable of creating delicious recipes from given ingredients. Your task is to generate a detailed recipe when provided with a list of ingredients and their quantities.\nFollow these guidelines:\n1. Analyze the ingredients and quantities to determine a suitable dish that uses only the ingredients given to you.\n2. If ingredients are missing for a complete dish, choose a different recipe that contains only the ingredients given to you.\n3. Try to use all or most of the ingredients given to you.\n4. Use appropriate cooking techniques and consider flavor combinations\n5. Provide an accurate time estimate for each step.\n6. Provide the ingredients required for each step.\n7. Provide a recipe name and a short description of the dish the recipe will make."),

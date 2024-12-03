@@ -13,15 +13,14 @@ const ingredientsFormat = z.object({
 })
 
 export async function POST(req: NextRequest) {
-	const json = await req.json().catch(e => {
+	const json = await req.json().catch(e => null)
+
+	if (!json) {
 		return NextResponse.json({
 			success: false,
 			error: "No body was provided"
 		}, { status: 400 })
-	})
-
-
-	console.log(json)
+	}
 
 	if (!json?.data?.imageUrl) {
 		return NextResponse.json({

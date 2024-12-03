@@ -22,6 +22,8 @@ export async function POST(req: NextRequest) {
 		}, { status: 400 })
 	}
 
+	console.log("JSON", json)
+
 	if (!json?.data?.imageUrl) {
 		return NextResponse.json({
 			success: false,

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ChatAnthropic } from "@langchain/anthropic";
-import { ChatPromptTemplate, PromptTemplate } from "@langchain/core/prompts";
 import { z } from "zod"
 import { HumanMessage, SystemMessage } from "@langchain/core/messages";
 

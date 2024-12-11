@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 	if (parseResult.success) {
 		const model = new ChatAnthropic({
 			model: "claude-3-5-sonnet-latest",
-			temperature: 0.4
+			temperature: 1
 		});
 
 		const ingredientsFormatted = parseResult.data.ingredients.map(ingredient => `${ingredient.name}: ${ingredient.quantity} ${ingredient.unit}`).join("\n")
